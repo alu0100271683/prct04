@@ -10,4 +10,29 @@ Hello world
 3.- ¿Cuales son las diferencias entre la ejecucion del programa "Hola Mundo" con el interprete de Ruby (ruby helloWorld.rb) y el interprete interactivo del ejercicio anterio?
 Desde el interprete interactivo nos permite seguir realizando instrucciones, mientras que al pasarle el fichero al interprete resuelves las consultas y finaliza el proceso.
 
+4.- ¿Cual es el resultado de cada una de las siguientes operaciones?
+[1] pry(main)> puts x
+10
+=> nil
+[2] pry(main)> def hello
+[2] pry(main)*   puts "hello world"
+[2] pry(main)* end  
+=> :hello
+[3] pry(main)> hello
+hello world
+=> nil
+[4] pry(main)> byebye
+bye bye world!!!
+=> nil
+[5] pry(main)> x = "changed"
+=> "changed"
+[6] pry(main)> exit
+program resumes here. Value of x is: changed.
+
+5.- ¿Caales son las diferencias entre la ejecucion del programa "Hola Mundo" con el interprete interactivo y con pry?
+En pry definimos la funcion hello y lo la invocamos, en irb le pedimos direcamente que muestre el string
+
+
+
+
 
