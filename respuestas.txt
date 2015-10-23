@@ -29,10 +29,332 @@ bye bye world!!!
 [6] pry(main)> exit
 program resumes here. Value of x is: changed.
 
-5.- ¿Caales son las diferencias entre la ejecucion del programa "Hola Mundo" con el interprete interactivo y con pry?
-En pry definimos la funcion hello y lo la invocamos, en irb le pedimos direcamente que muestre el string
+5.- ¿Cuales son las diferencias entre la ejecucion del programa "Hola Mundo" con el interprete interactivo y con pry?
+Cuando ejecumos el programa hola mundo podemos seguir añadiendo nuevas funcciones/acciones.
 
+6.- ¿Qué diferencia hay entre "\t\n" y ’\t\n’?
+Las comillas simples no interpolan las dobles si.
 
+7. ¿Como funciona %q? ¿Qué es %q{hello world\n}? ¿Qué es %q{’a’ ’b’ ’c’}?
+%q no interpola
+irb(main):001:0> c= %q{hello world\n ...lineas despues}
+=> "hello world\\n ...lineas despues"
+irb(main):002:0> puts c
+hello world\n ...lineas despues
+=> nil
+%Q : interpola
+irb(main):003:0> c= %Q{hello world\n ...lineas despues}
+=> "hello world\n ...lineas despues"
+irb(main):004:0> puts c
+hello world
+...lineas despues
+=> nil
 
+8.- ¿Como funciona %Q? ¿Qué es %Q{hello world\n}? ¿Qué es %Q{"a" "b" "c"}?
+%Q genera dobles comillas en el caso de que se ponga %Q con “” te mostrara las dobles
+comillas
+
+9.- ¿Que queda en c?
+:001 > a = 4
+ => 4 
+:002 > b = 2
+ => 2 
+:003 > c = <<HERE
+:004"> --#{a}--
+:005"> --#{b}--
+:006"> HERE
+ => "--4--\n--2--\n" 
+:007 > puts c
+--4--
+--2--
+ => nil 
+:008 > c
+ => "--4--\n--2--\n" 
+
+10.- ¿Que queda en c?
+:001 > a = 4
+ => 4 
+:002 > b = 2
+ => 2 
+:003 > c = <<'HERE'
+:004'> --#{a}--
+:005'> --#{b}--
+:006'> HERE
+ => "--\#{a}--\n--\#{b}--\n" 
+:007 > puts c
+--#{a}--
+--#{b}--
+ => nil 
+2.2.1 :008 > c
+ => "--\#{a}--\n--\#{b}--\n" 
+
+11.- s = "hello". ¿Cu ́al es el valor de las siguientes expresiones?
+009 > s = "hello"
+ => "hello" 
+:010 > s[0,2]
+ => "he" 
+:011 > s[-1,1]
+ => "o" 
+:012 > s[0,10]
+ => "hello" 
+
+12.-¿Que queda en g?
+016 > g
+ => "hello world"016 > g
+ => "hello world"
+
+13.-¿Que queda en e?
+:002 > e
+ => "..."
+
+14.- ¿cual es el resultado?
+005 > "#{a=a+1} "*3
+ => "2 2 2 "
+
+15.- ¿Qu ́e es esto? %w[this is a test]
+Un array  
+=> ["this", "is", "a", "test"]
+
+16.- ¿Qu ́e es esto? %w[\t \n]
+ => ["\\t", "\\n"] 
+
+17.- ¿Qu ́e es esto? %W[\t \n]
+ => ["\t", "\n"]
+
+18.- Qu ́e contiene nils? nils = Array.new(3)
+zero es un array que estan en vacio sus 3 elementos.
+
+19.- ¿Qu ́e contiene zeros? zeros = Array.new(3, 0)
+nils es un array que estan en 0 sus 3 elementos.
+
+20. ¿Qu ́e queda en b?
+:010 > puts b
+1
+2
+3
+4
+ => nil 
+:011 > b
+ => [[1, 2], [3, 4]]
+
+21.- ¿Qu ́e queda en c?
+:002 > c
+ => [0, 2, 4] 
+
+22. ¿Cu ́al es el resultado de cada una de estas operaciones?
+:005 > a = ('a'..'e').to_a
+ => ["a", "b", "c", "d", "e"] 
+2.2.1 :006 > a[1,1]
+ => ["b"] 
+2.2.1 :007 > a[-2,2]
+ => ["d", "e"] 
+2.2.1 :008 > a[0..2]
+ => ["a", "b", "c"] 
+2.2.1 :009 > a[0...1]
+ => ["a"] 
+2.2.1 :010 > a[-2...-1]
+ => ["d"]
+
+23.- ¿Cu ́al es el resultado de cada una de estas operaciones?
+a[0,2] = %w{A B}
+ => ["A", "B"] 
+2.2.1 :012 > a
+ => ["A", "B", "c", "d", "e"] 
+2.2.1 :013 > a[2..5] = %w{C D E}
+ => ["C", "D", "E"] 
+2.2.1 :014 > a
+ => ["A", "B", "C", "D", "E"] 
+2.2.1 :015 > a[0,0] = [1,2,3]
+ => [1, 2, 3] 
+2.2.1 :017 > a
+ => [1, 2, 3, "A", "B", "C", "D", "E"] 
+2.2.1 :018 > a[0,2] = []
+ => [] 
+2.2.1 :020 > a
+ => [3, "A", "B", "C", "D", "E"] 
+ :021 > a[-1,1] = [ 'Z' ]
+ => ["Z"] 
+2.2.1 :022 > a
+ => [3, "A", "B", "C", "D", "Z"] 
+2.2.1 :023 > a[-2,2] = nil
+ => nil 
+2.2.1 :024 > a
+ => [3, "A", "B", "C", nil] 
+
+24.- ¿Cu ́al es el resultado de cada una de estas operaciones?
+ :001 > a = (1...4).to_a
+ => [1, 2, 3] 
+2.2.1 :002 > a = a + [4,5]
+ => [1, 2, 3, 4, 5] 
+2.2.1 :003 > a += [[6,7,8]]
+ => [1, 2, 3, 4, 5, [6, 7, 8]] 
+2.2.1 :004 > a
+ => [1, 2, 3, 4, 5, [6, 7, 8]] 
+2.2.1 :005 > a = a + 9
+TypeError: no implicit conversion of Fixnum into Array
+	from (irb):5:in `+'
+	from (irb):5
+	from /home/marcos/.rvm/rubies/ruby-2.2.1/bin/irb:11:in `<main>'
+
+25.- ¿Cu ́al es el resultado de cada una de estas operaciones?
+2.2.1 :006 > x = %w{a b c b a}
+ => ["a", "b", "c", "b", "a"] 
+2.2.1 :007 > x = x - %w{b c d}
+ => ["a", "a"]
+
+26.- ¿Cu ́al es el resultado de cada una de estas operaciones?
+2.2.1 :001 > z = [0]*8
+ => [0, 0, 0, 0, 0, 0, 0, 0] 
+
+27.- ¿Cu ́al es el resultado de cada una de estas operaciones?
+2.2.1 :001 > a = []
+ => [] 
+2.2.1 :002 > a << 1
+ => [1] 
+2.2.1 :003 > a << 2 << 3
+ => [1, 2, 3] 
+2.2.1 :004 > a << [4,5,6]
+ => [1, 2, 3, [4, 5, 6]] 
+2.2.1 :006 > a.concat [7,8]
+ => [1, 2, 3, [4, 5, 6], 7, 8] 
+
+28.- ¿Cu ́al es el resultado de cada una de estas operaciones?
+2.2.1 :001 > a = [1, 1, 2, 2, 3, 3, 4] 
+ => [1, 1, 2, 2, 3, 3, 4] 
+2.2.1 :002 > b = [5, 5, 4, 4, 3, 3, 2] 
+ => [5, 5, 4, 4, 3, 3, 2] 
+2.2.1 :003 > c = a | b
+ => [1, 2, 3, 4, 5] 
+2.2.1 :004 > d = b | a
+ => [5, 4, 3, 2, 1] 
+2.2.1 :005 > e = a & b
+ => [2, 3, 4] 
+2.2.1 :006 > f = b & a
+ => [4, 3, 2] 
+
+29.- ¿Qu ́e resultados dan las siguientes operaciones?
+2.2.1 :001 > a = 1..10
+ => 1..10 
+2.2.1 :003 > a.class
+ => Range 
+2.2.1 :004 > a.to_a
+ => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+2.2.1 :005 > b = 1...10
+ => 1...10 
+2.2.1 :006 > b.to_a
+ => [1, 2, 3, 4, 5, 6, 7, 8, 9] 
+2.2.1 :007 > b.include? 10
+ => false 
+2.2.1 :008 > b.include? 8
+ => true 
+2.2.1 :009 > b.step(2)  
+ => #<Enumerator: 1...10:step(2)> 
+2.2.1 :010 > b.step(2)  {|x| print "#{x} " }
+1 3 5 7 9  => 1...10 
+2.2.1 :011 > 1..3.to_a
+NoMethodError: undefined method `to_a' for 3:Fixnum
+	from (irb):11
+	from /home/marcos/.rvm/rubies/ruby-2.2.1/bin/irb:11:in `<main>'
+
+30. ¿Qu ́e resultados dan las siguientes operaciones?
+2.2.1 :001 > r = 0...100
+ => 0...100 
+2.2.1 :002 > r.member? 50
+ => true 
+2.2.1 :003 > r.include? 99.9
+ => true 
+2.2.1 :004 > r.member? 99.9
+ => true 
+
+73. ¿Qué resultados dan las siguientes operaciones?
+    >> true.class
+    	=> TrueClass
+    >> false.class
+   	 => FalseClass
+    >> puts "hello" if 0
+    	hello
+	=> nil
+    >> puts "hello" if nil
+    	=> nil
+    >> puts "hello" if ""
+    	(irb):5: warning: string literal in condition
+	hello
+	=> nil
+
+74. ¿Qué resultados dan las siguientes operaciones?
+    >> x = :sym
+    => :sym
+    >> x.class
+    	=> Symbol
+    >> x == ’sym’
+    	=> false
+    >> x == :sym
+    	=> true
+    >> z = :’a long symbol’
+    => :"a long symbol"
+    >> z.class
+    	=> Symbol
+    >> x == ’sym’.to_sym
+    	=> true
+    >> x.to_s == ’sym’
+    	=> true
+
+75. ¿Qué resultados se dan?
+    >> s = "Ruby"
+    => "Ruby"
+    >> t = s
+    	=> "Ruby"
+    >> t[-1] = ""
+   	=> ""
+    >> print s
+    	 Rub=> nil
+    >> t = "Java"
+    => "Java"
+    >> print s, t
+	RubJava=> nil
+
+76. ¿Cuál es el resultado?
+    >> "%d %s" % [3, "rubies"]
+   	 => "3 rubies"
+
+77. ¿Cuáles son los resultados?
+    >> x, y = 4, 5
+    	=> [4, 5]
+    >> z = x > y ? x : y
+    	=> 5
+    >> x,y,z = [1,2,3]
+   	 => [1, 2, 3]
+
+78. ¿Qué resultados dan las siguientes operaciones?
+    >> x = { :a => 1, :b => 2 }
+    => {:b=>2, :a=>1}
+    >> x.keys
+    	=> [:a, :b]
+    >> x.values
+	=> [1, 2]
+    >> x[:c] = 3
+    => 3
+    >> x
+    	=> {:a=>1, :b=>2, :c=>3}
+    >> x.delete(’a’)
+    => nil
+    >> x
+    	=> {:a=>1, :b=>2, :c=>3}
+    >> x.delete(:a)
+    => 1
+    >> x
+    	=> {:b=>2, :c=>3}
+    >> x = { :a => 1, :b => 2, :c => 4 }
+    => {:b=>2, :c=>4, :a=>1}
+    >> x.delete_if { |k,v| v % 2 == 0 }
+    	=> {:a=>1}
+    >> x
+   	 => {:a=>1}
+
+79. ¿Qué hace la siguiente sentencia? counts = Hash.new(0) ¿Qué diferencia hay con la asignación counts = {}?
+
+80. ¿Qué retorna esta expresión regular? ’hello world, hello LPP’.scan 
+
+	=> ["hello", "word", "hello", "LPP"]
 
 
